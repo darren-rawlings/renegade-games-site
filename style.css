@@ -20,11 +20,28 @@ body {
 a { color: var(--fire-hot); }
 
 .hero {
-  padding: 72px 16px 48px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 96px 16px 72px;
   text-align: center;
   background: radial-gradient(ellipse at 50% 120%, rgba(255, 122, 26, 0.35), transparent 65%);
   border-bottom: 1px solid var(--line);
 }
+
+/* The studio logo, faded behind the heading and melting into the page at the edges. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("images/renegade-games-backdrop.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 75%);
+}
+
+.hero h1, .hero p { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85); }
 
 .hero h1 {
   margin: 0;
